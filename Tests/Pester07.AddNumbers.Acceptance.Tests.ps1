@@ -42,16 +42,16 @@ Describe "Addition Acceptance Tests" -Tag "Acceptance" {
             for ($i = 1; $i -le 100; $i++) {
                 $input1 = $i + $i + 1
                 $answer = $($input1 + 2)
-                $numbersOneParam += @{number1 = $input1; number2 = $input2; expected = $answer }
+                $numbersOneParam += @{number1 = $input1; expected = $answer }
             }
         }
-        It "number1 = <number1> should Return <expected>" -ForEach @(
+        It "number1 = <number1> should Return (<number1> + 2) = <expected>" -ForEach @(
             @{ number1 = 1; expected = 3 }
         ) {
             AddNumbers -number1 $number1 | Should -Be $expected
         }
 
-        It "number1 = <number1> should Return <expected>" -ForEach @($numbersOneParam) {
+        It "number1 = <number1> should Return (<number1> + 2) = <expected>" -ForEach @($numbersOneParam) {
             AddNumbers -number1 $number1 | Should -Be $expected
         }
     }

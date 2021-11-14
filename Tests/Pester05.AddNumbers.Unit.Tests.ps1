@@ -45,8 +45,8 @@ Describe "AddNumbers" -Tag "Unit" {
             $number1 = 4
             Write-Output "setting number1 to $number1"
         }
-        It "$number1 plus default(2) should return $($number1+2)" {
-            AddNumbers -number1 $number1 | Should -Be 6
+        It "$number1 plus default(2) should return $($number1 +2 )" {
+            AddNumbers -number1 $number1 | Should -Be $($number1 + 2)
         }
 
         It "$number1 plus default(2) should return an int" {
