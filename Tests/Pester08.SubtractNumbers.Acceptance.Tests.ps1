@@ -43,13 +43,13 @@ Describe "Subtraction Acceptance Tests" -Tag "Acceptance" {
                 $numbersOneParam += @{number1 = $input1; number2 = $input2; expected = $answer }
             }
         }
-        It "number1 = <number1> should return <expected>" -ForEach @(
+        It "number1 = <number1> should Return (<number1> - 0) = <expected>" -ForEach @(
             @{ number1 = 5; expected = 5 }
         ) {
             SubtractNumbers -number1 $number1 | Should -Be $expected
         }
 
-        It "number1 = <number1> should return <expected>" -ForEach @($numbersOneParam) {
+        It "number1 = <number1> should Return (<number1> - 0) = <expected>" -ForEach @($numbersOneParam) {
             SubtractNumbers -number1 $number1 | Should -Be $expected
         }
     }
