@@ -1,0 +1,39 @@
+pool:
+  vmImage: 'windows-latest'
+
+pr:
+  branches:
+    include:
+    - master
+
+stages:
+- stage: Test
+  displayName: Test and Analyze
+  jobs:
+  - template: JobTemplates\PesterTests.yml
+    parameters:
+      TestsPath: 'Tests'
+      ResultsPath: 'Publish'
+      TestResultsFile: 'Q-Test-Pester.xml'
+      Tag: 'Quality'
+      Verbosity: 'Detailed'
+      JobName: 'QualityTests'
+      JobDisplayName: 'Pester Code Quality Test'
+  - template: JobTemplates\PesterTests.yml
+    parameters:
+      TestsPath: 'Tests'
+      ResultsPath: 'Publish'
+      TestResultsFile: 'U-Test-Pester.xml'
+      Tag: 'Unit'  
+      Verbosity: 'Detailed'
+      JobName: 'UnitTests'
+      JobDisplayName: 'Pester Unit Test'
+  - template: JobTemplates\PesterTests.yml
+    parameters:
+      TestsPath: 'Tests'
+      ResultsPath: 'Publish'
+      TestResultsFile: 'A-Test-Pester.xml'
+      Tag: 'Acceptance'
+      Verbosity: 'Detailed'
+      JobName: 'AccptanceTests'
+      JobDisplayName: 'Pester Acceptance Test'
