@@ -2,6 +2,9 @@
 .SYNOPSIS
 Create app authentication
 
+.DESCRIPTION
+Create app authentication
+
 .PARAMETER ResourceGroup
 The name of the resource group that contains the APIM instnace
 
@@ -22,7 +25,7 @@ Param(
 
 try {
 
-    Write-Verbose "Getting FQDN"   
+    Write-Verbose "Getting FQDN"
     $WebAppFDQN = $(az webapp show -n $FunctionAppName -g $ResourceGroup --query "defaultHostName" --out tsv);
 
 
