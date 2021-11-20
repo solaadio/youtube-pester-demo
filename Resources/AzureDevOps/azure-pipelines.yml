@@ -46,8 +46,8 @@ stages:
         Contents: 'Resources/PowerShellScripts/**/*.ps1'
         TargetFolder: '$(Build.ArtifactStagingDirectory)/Resources/PSScripts'
         flattenFolders: true
-    - task: PublishPipelineArtifact@0
+    - task: PublishPipelineArtifact@1
       displayName: Publish PSScripts Pipeline Artifact
       inputs:
         targetPath: $(Build.ArtifactStagingDirectory)/Resources/PSScripts
-        artifactName: PowerShellScripts
+        artifact: PowerShellScripts
