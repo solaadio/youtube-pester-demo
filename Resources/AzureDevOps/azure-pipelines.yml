@@ -39,6 +39,7 @@ stages:
       JobDisplayName: 'Pester Acceptance Test'
   - job: Publish
     displayName: Publish
+    steps:
     - task: CopyFiles@2
       displayName: 'Copy PSScripts Files to: $(Build.ArtifactStagingDirectory)'
       inputs:
