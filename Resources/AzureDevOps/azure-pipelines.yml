@@ -37,3 +37,16 @@ stages:
       Verbosity: 'Detailed'
       JobName: 'AccptanceTests'
       JobDisplayName: 'Pester Acceptance Test'
+  - job: Publish
+    displayName: Publish
+    - task: CopyFiles@2
+      displayName: 'Copy PSScripts Files to: $(Build.ArtifactStagingDirectory)'
+      inputs:
+        Contents: 'Resources/PowerShellScripts/**/*.ps1'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/Resources/PSScripts'
+        flattenFolders: true
+    - task: PublishPipelineArtifact@0
+      displayName: Publish PSScripts Pipeline Artifact
+      inputs:
+        targetPath: $(Build.ArtifactStagingDirectory)/Resources/PSScripts
+        artifactName: PowerShellScripts
